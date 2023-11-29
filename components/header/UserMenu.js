@@ -2,12 +2,13 @@ import styles from "./styles.module.scss";
 import {MdAccountCircle} from "react-icons/md";
 import Link from "next/link";
 const Usermenu = ({loggedIn}) => {
-    return (  <div className={styles.menu}>
+    return (  
+    <div className={styles.menu}>
         <h4>welcome to shoppay!</h4>
          {
              loggedIn ?(
-                 <div>
-                     <MdAccountCircle />
+                 <div  className={styles.flex}>
+                    <img src="https://static.vecteezy.com/system/resources/previews/019/896/012/original/female-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="" className={styles.menu__img}  />
                      <div className={styles.col}>
                          <span>welcome back</span>
                          <h3>مهسا</h3>

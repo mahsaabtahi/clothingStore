@@ -8,44 +8,47 @@ import Link from "next/link";
 import Usermenu from './UserMenu';
 
 export default function Top(){
-    const [loggedIn,setLoggedIn]= useState(false);
+    const [loggedIn,setLoggedIn]= useState(true);
+    const [visible,setVisible]= useState(false);
     return( <div className={styles.top}>
                 <div className={styles.top__container}>
                     <div></div>
                   <ul className={styles.top__list}>
-                    <li>
+                    <li className={styles.li}>
                         <AiOutlineHome />
                         <span>خانه</span>
                     </li>
-                    <li>
+                    <li className={styles.li}>
                         <MdSecurity />
                         <span>Buyer protection</span>
                     </li>
-                     <li>
+                     <li className={styles.li}>
                         <span>Customers Serveice</span>
                     </li>
-                    <li>
+                    <li className={styles.li}>
                         <span>راهنما</span>
                     </li>
-                    <li>
+                    <li className={styles.li}>
                         <BsSuitHeart />
                         <Link href="/profile/whishlist">
                          <span>علاقه مندی ها</span>
                         </Link>
             
                     </li>
-                    <li>
+                    <li className={styles.li}
+                    onMouseOver={()=>setVisible(true)}
+                    onMouseLeave={()=>setVisible(false)}>
                     {
                         loggedIn ? (
-                        <li>
+                        <li className={styles.li}>
                         <div className={styles.flex}>
-                            <MdAccountCircle />
+                            <img src="https://static.vecteezy.com/system/resources/previews/019/896/012/original/female-user-avatar-icon-in-flat-design-style-person-signs-illustration-png.png" alt="" />
                             <span>مهسا</span>
                             <RiArrowDropDownFill/>
         
                         </div></li>
                         ):(
-                        <li>
+                        <li className={styles.li}>
                         <div className={styles.flex}>
                             <MdAccountCircle />
                             <span>حساب کاربری</span>
@@ -55,7 +58,10 @@ export default function Top(){
                         </li>
                      )
                     }
-                   <Usermenu loggedIn={loggedIn}/>
+                    {
+                        visible && <Usermenu loggedIn={loggedIn}/>
+                    }
+                
                     </li>
             </ul>
        </div>
