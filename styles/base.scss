@@ -1,1 +1,31 @@
 $shadow-1:rgba(99,99,99,0.2) 0px 2px 8px 0px;
+$blue-color:#2f82ff;
+$gray_color:#f3f1f1;
+.btn_primary{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: $blue-color;
+    color: $gray_color;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 2px;
+
+
+}
+.btn_outlined{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background:$gray_color;
+    color:  $blue-color;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 2px;
+
+
+}

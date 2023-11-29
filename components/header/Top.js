@@ -1,11 +1,14 @@
+import React, { useState } from 'react';
 import styles from "./styles.module.scss";
 import {AiOutlineHome} from "react-icons/ai";
 import {MdSecurity,MdAccountCircle} from "react-icons/md";
 import {BsSuitHeart} from "react-icons/bs"; 
 import {RiArrowDropDownFill}from "react-icons/ri";
 import Link from "next/link";
+import Usermenu from './UserMenu';
 
 export default function Top(){
+    const [loggedIn,setLoggedIn]= useState(false);
     return( <div className={styles.top}>
                 <div className={styles.top__container}>
                     <div></div>
@@ -32,13 +35,28 @@ export default function Top(){
             
                     </li>
                     <li>
-                    <div className={styles.flex}>
-                        <MdAccountCircle />
-                        <span>حساب کاربری</span>
-                        <RiArrowDropDownFill/>
-    
-                    </div>
-                </li>
+                    {
+                        loggedIn ? (
+                        <li>
+                        <div className={styles.flex}>
+                            <MdAccountCircle />
+                            <span>مهسا</span>
+                            <RiArrowDropDownFill/>
+        
+                        </div></li>
+                        ):(
+                        <li>
+                        <div className={styles.flex}>
+                            <MdAccountCircle />
+                            <span>حساب کاربری</span>
+                            <RiArrowDropDownFill/>
+        
+                        </div>
+                        </li>
+                     )
+                    }
+                   <Usermenu loggedIn={loggedIn}/>
+                    </li>
             </ul>
        </div>
     </div>
