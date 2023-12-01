@@ -3,15 +3,19 @@ import styles from '@/styles/Home.module.scss'
 import Header from "../components/header";
 import Footer from "../components/footer";
 import axios from 'axios';
+import { useSession, signIn, signOut } from "next-auth/react"
 export default function Home({country}) {
-    console.log(country);
-    return ( 
-    <div >
-        <Header country={country}/>
-        <Footer country={country}/>
-    </div>
-
-    );
+    const { data: session } = useSession()
+  if(session) {
+    return <>
+      Signed in as {session.user.email} <br/>
+      <button onClick={() => signOut()}>Sign out</button>
+    </>
+  }
+  return <>
+    Not signed in <br/>
+    <button onClick={() => signIn()}>Sign in</button>
+  </>
 }
 export async function getServerSideProps(){
     let data = await axios.get('https://api.ipregistry.co/?key=x99mxbfypg3z38fb')
