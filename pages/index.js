@@ -5,17 +5,14 @@ import Footer from "../components/footer";
 import axios from 'axios';
 import { useSession, signIn, signOut } from "next-auth/react"
 export default function Home({country}) {
-    const { data: session } = useSession()
-  if(session) {
-    return <>
-      Signed in as {session.user.email} <br/>
-      <button onClick={() => signOut()}>Sign out</button>
-    </>
-  }
-  return <>
-    Not signed in <br/>
-    <button onClick={() => signIn()}>Sign in</button>
-  </>
+    const { data: session } = useSession();
+    return (
+      <div>
+        <Header country={country}/>
+        <Footer country={country}/>
+      </div>
+    );
+
 }
 export async function getServerSideProps(){
     let data = await axios.get('https://api.ipregistry.co/?key=x99mxbfypg3z38fb')
