@@ -2,25 +2,20 @@ import Link from "next/link";
 import styles from "./styles.module.scss";
 
 const Links = () => {
-    return (
-        <div className={styles.footer__links}>
-            {
-                links.map((link)=>(
-                    <ul>
-                        <b>{link.heading}</b>
-                        {
-                            link.links.map((link)=>(
-                                <li>
-                                    <Link href={link.link}>{link.name}</Link>
-                                </li>
-                            ))
-                        }
-                    </ul>
-                ))
-            }
-            
-        </div>
-    );
+  return (
+    <div className={styles.footer__links}>
+      {links.map((link) => (
+        <ul>
+            <b>{link.heading}</b>
+            {link.links.map((link) => (
+            <li>
+              <Link href={link.link}>{link.name}</Link>
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  );
 }
 
 export default Links;

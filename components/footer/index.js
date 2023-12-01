@@ -5,7 +5,7 @@ import Newsletter from './NewsLetter';
 import Payment from './Payment';
 import Socials from './Socials';
 import styles from "./styles.module.scss";
-const Index = () => {
+const Index = ({country}) => {
     return (
         <footer className={styles.footer}>
             <div className={styles.footer__container}>
@@ -13,7 +13,7 @@ const Index = () => {
                 <Socials />
                 <Newsletter />
                 <Payment />
-                <Copyright />
+                <Copyright country={country}/>
             </div>
 
         </footer>
