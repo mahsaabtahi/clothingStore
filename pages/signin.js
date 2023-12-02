@@ -3,10 +3,27 @@ import Header from '../components/header';
 import Footer from '../components/footer';
 import styles from "../styles/signin.module.scss";
 import {BiLeftArrowAlt } from 'react-icons/bi';
-import LoginInput from '../components/inputs/loginInputs/index.js'
+import LoginInput from '../components/inputs/loginInputs';
 import Link from 'next/link';
 import { Form,Formik } from 'formik';
+import * as Yup from 'yup';
+import { useState } from 'react';
+const initialvalues ={
+    login_email :"",
+    login_password:"",
+}
 const signin = () => {
+    const [user,setUser] =useState(initialvalues);
+    const {login_email,login_password} =user;
+    const handleChange= (e) =>{
+        const {name, value}= e.target;
+        setUser({...user ,[name] : value});
+    };
+    console.log(user);
+    const loginValidation=Yup.object({
+        login_email:Yup.string().required("Email address is required.")
+        .email("Please enter a valid email address"),
+    });
     return (
         <>
             <Header />
@@ -25,11 +42,30 @@ const signin = () => {
                         <p>
                             ..........get access to one of the best eShoppong
                         </p>
-                        <Formik>
+                        <Formik
+                        enableReinitialize
+                        initialValues={
+                            {
+                                login_email,
+                                login_password,
+                            }
+                        }
+                        validationSchema={loginValidation}>
                             {
                                 (form)=>(
                                     <Form>
-                                        <LoginInput icon="email" placeholder="Email Address"/>
+                                        <LoginInput
+                                         type="text"
+                                         name="login_email"
+                                         icon="email"
+                                         placeholder="Email Address"
+                                         onchange={handleChange}/>
+                                          <LoginInput
+                                         type="password"
+                                         name="login_password"
+                                         icon="password"
+                                         placeholder="Password"
+                                         onchange={handleChange}/>
                                     </Form>
                                 )
                             }
@@ -43,5 +79,4 @@ const signin = () => {
         </>
     );
 }
-
-export default signin;
+export default signin ;

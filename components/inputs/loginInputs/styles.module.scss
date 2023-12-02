@@ -13,6 +13,7 @@
     svg{
         width: 25px;
         height: 25px;
+        margin-top: 10px;
         stroke: #6666669a;
         fill: #6666669a;
     }
@@ -26,8 +27,22 @@
         font-size: 1.1rem;
         &::placeholder{
             color:#aaa;
-            //font-weight: 500;
+            font-weight: 500;
         }
          
+    }
+}
+.error{
+    background:$light-error-color !important;
+    margin-top: 5rem !important;
+    .input{
+        color:#fff;
+        &::placeholder{
+            color:#fff !important;
+        }
+    }
+    svg{
+        fill: #fff;
+        stroke: #fff;
     }
 }
