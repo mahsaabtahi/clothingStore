@@ -9,6 +9,7 @@ import { Form,Formik } from 'formik';
 import * as Yup from 'yup';
 import CircledIconBtn from "../components/buttons/circledIconBtn";
 import { useState } from 'react';
+
 const initialvalues ={
     login_email :"",
     login_password:"",
@@ -68,6 +69,10 @@ const signin = () => {
                                          placeholder="Password"
                                          onchange={handleChange}/>
                                          <CircledIconBtn type="submit" text="Sing in"/>
+                                         <div className={styles.forgot}>
+                                            <Link href="/forgot">Forgot password ?</Link>
+                                         </div>
+                 
                                     </Form>
                                 )
                             }
