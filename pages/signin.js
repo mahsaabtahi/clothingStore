@@ -9,12 +9,14 @@ import { Form,Formik } from 'formik';
 import * as Yup from 'yup';
 import CircledIconBtn from "../components/buttons/circledIconBtn";
 import { useState } from 'react';
+import { getProviders } from 'next-auth/react';
 
 const initialvalues ={
     login_email :"",
     login_password:"",
 }
-const signin = () => {
+const signin = ({providers}) => {
+    console.log(providers);
     const [user,setUser] =useState(initialvalues);
     const {login_email,login_password} =user;
     const handleChange= (e) =>{
@@ -77,6 +79,23 @@ const signin = () => {
                                 )
                             }
                         </Formik>
+                        <div className={styles.login__socials}>
+                            <span className={styles.or}> Or continue with</span>
+                            <div className={styles.login__socials_wrap}>
+                            {providers.map((provider) => (
+                                <div key={provider.name}>
+                                         <button
+                                           className={styles.social__btn}
+                                          onClick={() => signIn(provider.id)}
+                                         >
+                                        <img src={`../../icons/${provider.name}.png`} alt="" />
+                                         Sign in with {provider.name}
+                                            </button>
+                                </div> 
+    
+                                   ))}
+                            </div>
+                        </div>
                     </div>
                 </div> 
 
@@ -87,3 +106,10 @@ const signin = () => {
     );
 }
 export default signin ;
+
+export async function getServerSideProps(context){
+    const providers=Object.values( await getProviders());
+    return {
+        props :{providers},
+    };
+}
