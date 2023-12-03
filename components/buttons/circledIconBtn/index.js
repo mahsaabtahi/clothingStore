@@ -1,6 +1,6 @@
 import { BiRightArrowAlt } from "react-icons/bi";
 import styles from "./styles.module.scss";
-const CircledIconBtn = (type,text,icon) => {
+const CircledIconBtn = ({type,text}) => {
     return (
         <button className={styles.button} type={type}>
             {text}
