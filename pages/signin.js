@@ -183,9 +183,9 @@ const signin = ({providers}) => {
                                          type="password"
                                          name="conf_password"
                                          icon="password"
-                                         placeholder="Password"
+                                         placeholder="Re-Type Password"
                                          onchange={handleChange}/>
-                                         <CircledIconBtn type="submit" text="Sing in"/>
+                                         <CircledIconBtn type="submit" text="Sign up"/>
                                          <div className={styles.forgot}>
                                             <Link href="/forgot">Forgot password ?</Link>
                                          </div>
